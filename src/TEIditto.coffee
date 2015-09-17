@@ -6,6 +6,9 @@ TEIditto = {}
 
 (($) ->
 
+  TEIditto.elTable = {}
+  TEIditto.behaviors = {}
+
   # Load TEI XML
 
   TEIditto.loadTEI = (url, cb) ->
@@ -24,16 +27,25 @@ TEIditto = {}
 
   # Without ODD, build table based on distinct list of elements in document
   TEIditto.fromTEI = (TEI, options={}, cb=null) ->
-    table = {}
     $(TEI).find(':root').find('*').andSelf().each (i, el) ->
-      table[el.tagName] = "tei-" + el.tagName
-    if cb? then cb(table)
-    table
+      TEIditto.elTable[el.tagName] = "tei-" + el.tagName
+    if cb? then cb(TEIditto.elTable)
+    TEIditto.elTable
 
   # Apply table
-  TEIditto.applyCustomElements = (table, options={}, cb=null) ->
-    for el of table
-      registered_el = document.registerElement(table[el])
+  TEIditto.applyCustomElements = (options={}, cb=null) ->
+    for el of TEIditto.elTable
+      template = null
+      # Add behavior if available
+      bhv = TEIditto.behaviors[el]
+      if bhv?
+        if bhv == "div"
+          template = { prototype: Object.create HTMLDivElement.prototype }
+        else if bhv == "span"
+          template = { prototype: Object.create HTMLSpanElement.prototype }
+        else if bhv == "a"
+          template = { prototype: Object.create HTMLAnchorElement.prototype }
+      registered_el = document.registerElement(TEIditto.elTable[el], template)
       # options for custom behaviour mapping
     if cb? then cb()
 
@@ -42,12 +54,12 @@ TEIditto = {}
   TEIditto.getHTML5 = (TEI_url, options={}, cb=null) ->
     TEIditto.loadTEI TEI_url, (TEI) ->
       newTree = null
-      TEIditto.fromTEI TEI, options, (table) ->
-        TEIditto.applyCustomElements(table, options)
+      TEIditto.fromTEI TEI, options, ->
+        TEIditto.applyCustomElements(options)
 
         convertEl = (el) ->
           # Create new element
-          newElement = $("<"+table[el.tagName]+">")
+          newElement = $("<"+TEIditto.elTable[el.tagName]+">")
           # Copy attributes
           $.each el.attributes, (index) ->
             $(newElement).attr(el.attributes[index].name, el.attributes[index].value)
@@ -66,6 +78,11 @@ TEIditto = {}
 
       if cb? then cb(newTree)
       newTree
+
+  TEIditto.addBehaviors = (bhvs) ->
+    for el, bhv of bhvs
+      if bhv in ["div", "span", "a"]
+        TEIditto.behaviors[el] = bhv 
 
 )($);
 
