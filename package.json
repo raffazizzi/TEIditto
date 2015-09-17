@@ -23,6 +23,7 @@
     "jquery": "~2.1.4"
   },
   "scripts": {
+    "install" : "npm run build",
     "build": "coffee -cj dist/TEIditto.js src/TEIditto.coffee",
     "test": "npm run build && npm run pretest && npm run dotest",
     "pretest": "coffee -cj test/alltests.js test/*.coffee",
