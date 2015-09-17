@@ -25,7 +25,7 @@ TEIditto = {}
   # Without ODD, build table based on distinct list of elements in document
   TEIditto.fromTEI = (TEI, options={}, cb=null) ->
     table = {}
-    $(TEI).find('TEI').find('*').andSelf().each (i, el) ->
+    $(TEI).find(':root').find('*').andSelf().each (i, el) ->
       table[el.tagName] = "tei-" + el.tagName
     if cb? then cb(table)
     table
