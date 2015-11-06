@@ -2,7 +2,7 @@
   "name": "TEIditto",
   "version": "0.0.0",
   "description": "ODD-driven JavaScript library to load a TEI XML document and register it as HTML5 custom elements.",
-  "main": "dist/tei-ditto.js",
+  "main": "dist/TEIditto.js",
   "keywords": [
     "TEI",
     "XML",
