@@ -35,18 +35,22 @@ TEIditto = {}
   # Apply table
   TEIditto.applyCustomElements = (options={}, cb=null) ->
     for el of TEIditto.elTable
-      template = null
-      # Add behavior if available
-      bhv = TEIditto.behaviors[el]
-      if bhv?
-        if bhv == "div"
-          template = { prototype: Object.create HTMLDivElement.prototype }
-        else if bhv == "span"
-          template = { prototype: Object.create HTMLSpanElement.prototype }
-        else if bhv == "a"
-          template = { prototype: Object.create HTMLAnchorElement.prototype }
-      registered_el = document.registerElement(TEIditto.elTable[el], template)
-      # options for custom behaviour mapping
+
+      # Only register if custom elements are supported
+      if document.registerElement?
+        template = null
+        # Add behavior if available
+        bhv = TEIditto.behaviors[el]
+        if bhv?
+          if bhv == "div"
+            template = { prototype: Object.create HTMLDivElement.prototype }
+          else if bhv == "span"
+            template = { prototype: Object.create HTMLSpanElement.prototype }
+          else if bhv == "a"
+            template = { prototype: Object.create HTMLAnchorElement.prototype }
+        registered_el = document.registerElement(TEIditto.elTable[el], template)
+        # options for custom behaviour mapping
+
     if cb? then cb()
 
   # Convert TEI elements to HTML5 custom elements
