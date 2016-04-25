@@ -26,4 +26,6 @@ describe 'TEIditto', ->
       $(html5).find("tei-title").eq(1).text().should.equal("Die Leiden des jungen Werther")
       done()
 
+    TEIditto.addBehaviors = {"div", "div"}
+
     TEIditto.getHTML5("testTEI.xml", null, cb)
