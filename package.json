@@ -1,0 +1,33 @@
+{
+  "name": "TEIditto",
+  "version": "0.0.0",
+  "description": "ODD-driven JavaScript library to load a TEI XML document and register it as HTML5 custom elements.",
+  "main": "dist/TEIditto.js",
+  "keywords": [
+    "TEI",
+    "XML",
+    "HTML5 custom elements",
+    "ODD"
+  ],
+  "author": "Raff Viglianti",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "~1.9.3",
+    "mocha": "~2.2.5",
+    "chai": "~3.2.0",
+    "mocha-phantomjs": "~3.6.0",
+    "document-register-element": "~0.4.5",
+    "babel": "~6.0.15",
+    "gulp-babel": "~6.1.0"
+  },
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
+  "scripts": {
+    "install": "npm run build",
+    "build": "coffee -cj dist/TEIditto.js src/TEIditto.coffee",
+    "test": "npm run build && npm run pretest && npm run dotest",
+    "pretest": "coffee -cj test/alltests.js test/*.coffee",
+    "dotest": "mocha-phantomjs test/runner.html"
+  }
+}
