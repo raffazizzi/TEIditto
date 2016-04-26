@@ -21,8 +21,10 @@
          <div>
             <head><ref target="https://github.com/raffazizzi/TEIditto">TEIditto</ref> - a JS library for NoXSL TEI publishing</head>
             <p>This idea is much indebted to <ref target="http://dcl.ils.indiana.edu/teibp/">TEI Boilerplate</ref>, but avoids the XSLT step.</p>
-            <p>The TEI is registered as HTML5 elements using the <ref target="https://github.com/raffazizzi/TEIditto">TEIditto</ref> library. Here's how it
-               works: 
+            <p>The TEI is registered as HTML5 elements using the <ref target="https://github.com/raffazizzi/TEIditto">TEIditto</ref> library. 
+               Registering TEI as HTML5 is an idea taken from an <ref target="https://github.com/hcayless/appcrit">online critical apparatus prototype</ref> by Hugh Cayless.</p>
+            <p>
+               Here's how this page works: 
                <list type="instructions" rend="numbered">
                   <item>TEIditto loads a TEI XML file and registers it as HTML5</item>
                   <item>Users can use TEIditto to register custom behaviors</item>
