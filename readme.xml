@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEIDitto README</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <div>
+            <head><ref target="https://github.com/raffazizzi/TEIditto">TEIDitto</ref> - a JS library for NoXSL TEI publishing</head>
+            <p>This idea is much indebted to <ref target="http://dcl.ils.indiana.edu/teibp/">TEI Boilerplate</ref>, but avoids the XSLT step.</p>
+            <p>The TEI is registered as HTML5 elements using the TEIDitto library. Here's how it
+               works: 
+               <list type="instructions" rend="numbered">
+                  <item>TEIDitto loads a TEI XML file and registers it as HTML5</item>
+                  <item>Users can use TEIDitto to register custom behaviors</item>
+                  <item>A CSS styles the TEI for display (the current CSS comes from TEI Boilerplate)</item>
+               </list>
+            </p>
+            <p>See <ref target="readme.xml">this document</ref> as XML.</p>
+         </div>
+      </body>
+  </text>
+</TEI>
