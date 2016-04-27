@@ -8,12 +8,18 @@ For now it can load any single-namespace TEI document, register its elements, an
 
 Still working on the ODD driven part:
 * register elements via a compiled ODD rather than a TEI document
-* convert TEI XML to HTML5 based on talbe built from the ODD
+* convert TEI XML to HTML5 based on a table built from the ODD
 
 To build you'll need `npm`. Then run:
 ```
 $ npm install
-$ npm run test
+$ gulp
 ```
+
+To develop:
+```
+$ gulp dev
+```
+This will run a local server; use HTML files under `/test` for testing and creating new tests.
 
 If the tests run without errors, the compiled library will be in `dist/TEIditto.js`.
