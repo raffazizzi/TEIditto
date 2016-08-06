@@ -1,4 +1,4 @@
-# TEIditto
+# * * DEPRECATED * * Use [CETEIcean.js](https://github.com/TEIC/CETEIcean) instead!
 
 ## Work in progress - the library is not completed yet. You're welcome to contribute!
 
